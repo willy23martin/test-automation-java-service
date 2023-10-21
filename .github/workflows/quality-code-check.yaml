@@ -2,7 +2,7 @@ name: Quality Code Check
 
 on:
   pull_request:
-    - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
