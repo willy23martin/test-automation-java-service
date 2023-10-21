@@ -1,7 +1,6 @@
 name: Quality Code Check
 
 on:
-  push:
   pull_request:
     - main
 jobs:
