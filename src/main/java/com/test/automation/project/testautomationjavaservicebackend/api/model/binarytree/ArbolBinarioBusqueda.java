@@ -6,6 +6,9 @@ package com.test.automation.project.testautomationjavaservicebackend.api.model.b
 
 import com.test.automation.project.testautomationjavaservicebackend.api.model.Car;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author thder
@@ -20,6 +23,11 @@ class NodoArbol {
         this.car = car;
         this.izquierda = null;
         this.derecha = null;
+    }
+
+    @Override
+    public String toString(){
+        return this.car.toString();
     }
 }
 
@@ -48,16 +56,19 @@ public class ArbolBinarioBusqueda {
         return raiz;
     }
 
-    public void imprimirInOrden() {
-        imprimirInOrdenRec(raiz);
+    public List<Car> imprimirInOrden() {
+        List<Car> cars = new ArrayList<>();
+        return imprimirInOrdenRec(raiz, cars);
     }
 
-    private void imprimirInOrdenRec(NodoArbol raiz) {
+    private List<Car> imprimirInOrdenRec(NodoArbol raiz, List<Car> cars) {
         if (raiz != null) {
-            imprimirInOrdenRec(raiz.izquierda);
+            cars = imprimirInOrdenRec(raiz.izquierda, cars);
             System.out.println(raiz.car);
-            imprimirInOrdenRec(raiz.derecha);
+            cars.add(raiz.car);
+            cars = imprimirInOrdenRec(raiz.derecha, cars);
         }
+        return cars;
     }
 
 }

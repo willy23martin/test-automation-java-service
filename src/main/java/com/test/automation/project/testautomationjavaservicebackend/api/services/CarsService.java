@@ -2,7 +2,8 @@ package com.test.automation.project.testautomationjavaservicebackend.api.service
 
 import com.test.automation.project.testautomationjavaservicebackend.api.database.CarsDAO;
 import com.test.automation.project.testautomationjavaservicebackend.api.model.Car;
-import com.test.automation.project.testautomationjavaservicebackend.api.model.binarytree.ArbolBinarioBusqueda;
+import com.test.automation.project.testautomationjavaservicebackend.api.model.datastructure.ArbolBinario;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +15,10 @@ public class CarsService {
     @Autowired
     private CarsDAO carsDAO;
 
-    private ArbolBinarioBusqueda arbolBinarioBusqueda;
+    private ArbolBinario<Car> carsBinaryTree;
 
     public List<Car> getCars() {
-        return carsDAO.getCarsDatabase();
+        return carsBinaryTree.recorrerInorden();
     }
 
     public List<Car> searchCarsByPriceRange(double initialPrice, double finalPrice) {
@@ -26,5 +27,13 @@ public class CarsService {
 
     public List<Car> searchCarsByBrands(String brands) {
         return null;
+    }
+
+    @PostConstruct
+    public void loadCarsDataInMemory(){
+        carsBinaryTree = new ArbolBinario<>();
+        for (Car car: carsDAO.getCarsDatabase()) {
+            carsBinaryTree.agregarElemento(car);
+        }
     }
 }

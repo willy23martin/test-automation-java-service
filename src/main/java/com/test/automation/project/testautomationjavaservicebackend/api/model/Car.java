@@ -13,4 +13,9 @@ public class Car {
     private double price;
     private String describe;
     private String marca;
+
+    @Override
+    public boolean equals(Object car){
+        return Double.compare(this.price, ((Car)car).getPrice()) == 0;
+    }
 }
