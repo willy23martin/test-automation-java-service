@@ -7,6 +7,7 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,11 +23,29 @@ public class CarsService {
     }
 
     public List<Car> searchCarsByPriceRange(double initialPrice, double finalPrice) {
-        return null;
+        List<Car> filteredCarsByPriceRange = new ArrayList<>();
+        for (Car car: carsBinaryTree.recorrerInorden()) {
+            int comparisonAgainstInitialPrice = Double.compare(car.getPrice(), initialPrice);
+            int comparisonAgainstFinalPrice = Double.compare(car.getPrice(), finalPrice);
+            if(carPriceIsBetweenRange(comparisonAgainstInitialPrice, comparisonAgainstFinalPrice)) {
+                filteredCarsByPriceRange.add(car);
+            }
+        }
+        return filteredCarsByPriceRange;
+    }
+
+    private static boolean carPriceIsBetweenRange(int comparisonAgainstInitialPrice, int comparisonAgainstFinalPrice) {
+        return comparisonAgainstInitialPrice >= 0 && comparisonAgainstFinalPrice <= 0;
     }
 
     public List<Car> searchCarsByBrands(String brands) {
-        return null;
+        List<Car> filteredCarsByBrand = new ArrayList<>();
+        for (Car car: carsBinaryTree.recorrerInorden()) {
+            if(brands.contains(car.getMarca())) {
+                filteredCarsByBrand.add(car);
+            }
+        }
+        return filteredCarsByBrand;
     }
 
     @PostConstruct
