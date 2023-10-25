@@ -27,7 +27,7 @@ public class ArbolBinario<T> {
 	
 	public void agregarElemento(T elemento){
 		if(estaVacio()){
-			raiz=new NodoArbol<T>(elemento);
+			setRaiz(new NodoArbol<T>(elemento));
 		}else{
 			raiz.agregarElemento(elemento);
 		}
