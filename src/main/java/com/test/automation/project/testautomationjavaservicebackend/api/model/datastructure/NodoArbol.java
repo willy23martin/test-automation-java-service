@@ -88,19 +88,19 @@ public class NodoArbol<T> implements Comparable<NodoArbol<T>> {
 		NodoArbol<T> nodoNuevo = new NodoArbol<T>(elemento);
 		if (esHoja()) {
 			if (esMenor(nodoNuevo)) {
-				der = nodoNuevo;
+				setDer(nodoNuevo);
 			} else {
-				izq = nodoNuevo;
+				setIzq(nodoNuevo);
 			}
 		} else if (esMenor(nodoNuevo)) {
 			if (der == null) {
-				der = nodoNuevo;
+				setDer(nodoNuevo);
 			} else {
 				der.agregarElemento(elemento);
 			}
 		} else {
 			if (izq == null) {
-				izq = nodoNuevo;
+				setIzq(nodoNuevo);
 			} else {
 				izq.agregarElemento(elemento);
 			}
