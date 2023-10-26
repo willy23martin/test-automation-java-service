@@ -37,12 +37,3 @@ jobs:
           coverage_report_title: 'Test coverage results'
           coverage_report_name: 'Test coverage results'
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Karate DSL Test Reports
-        uses: actions/upload-artifact@v2
-        if: ${{ always() }}
-        with:
-          name: Karate Integration Reports
-          path: |
-            ./target/karate-reports/
-            ./target/karate.log
