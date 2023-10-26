@@ -89,6 +89,11 @@ public class IntegrationTests {
         return karateScenario("searchCarsByBrands_DebeDevolver9Carros_CuandoNoSeEspecifiqueNingunaMarca_DadoQuePorDefectoBuscaraLasTresDisponibles");
     }
 
+    @Karate.Test
+    public Karate searchCarsByBrands_DebeDevolver9Carros_CuandoNoSeEspecifiqueElParametroMarcas_DadoQuePorDefectoBuscaraLasTresDisponibles(){
+        return karateScenario("searchCarsByBrands_DebeDevolver9Carros_CuandoNoSeEspecifiqueElParametroMarcas_DadoQuePorDefectoBuscaraLasTresDisponibles");
+    }
+
     private Karate karateScenario(String scenarioName) {
         return Karate.run()
                 .scenarioName(scenarioName)

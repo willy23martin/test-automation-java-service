@@ -55,3 +55,9 @@ Feature: GET Search Cars By Brand
     When method get
     Then status 200
     And match response == '#[9]'
+
+  Scenario: searchCarsByBrands_DebeDevolver9Carros_CuandoNoSeEspecifiqueElParametroMarcas_DadoQuePorDefectoBuscaraLasTresDisponibles
+    Given url baseUrl + '/api/searchBrands'
+    When method get
+    Then status 200
+    And match response == '#[9]'

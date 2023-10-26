@@ -29,6 +29,7 @@ public class CarsController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/searchBrands")
     public List<Car> filterCarsByBrands(@RequestParam(value = "brands", defaultValue = "BMW,Kia,Porche") String brands) throws Exception {
+        if(brands.isBlank()) brands = "BMW,Kia,Porche";
         return carsService.searchCarsByBrands(brands);
     }
 
