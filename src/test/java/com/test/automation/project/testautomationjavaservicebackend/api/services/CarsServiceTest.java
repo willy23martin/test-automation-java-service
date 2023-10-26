@@ -31,7 +31,7 @@ class CarsServiceTest {
     }
 
     @Test
-    void searchCarsByPriceRange_DebeRetornarUnaListaConDosCarros_CuandoElPrecioDelCarroNoSuperaLos100Millones() {
+    void searchCarsByPriceRange_DebeRetornarUnaListaConTresCarros_CuandoElPrecioDelCarroNoSuperaLos100Millones() {
         assertEquals(3, carsService.searchCarsByPriceRange(0.0, 100000000.0).size());
     }
 
@@ -93,5 +93,10 @@ class CarsServiceTest {
     @Test
     void searchCarsByBrands_DebeDevolver9Carros_CuandoSeFiltrePorLaMarcaBMW_Y_Kia_Y_Porche() {
         assertEquals(9, carsService.searchCarsByBrands("BMW,Kia,Porche").size());
+    }
+
+    @Test
+    void searchCarsByBrands_NoDebeDevolverCarros_CuandoNoSeEspecifiqueNingunaMarca() {
+        assertEquals(0, carsService.searchCarsByBrands("").size());
     }
 }
