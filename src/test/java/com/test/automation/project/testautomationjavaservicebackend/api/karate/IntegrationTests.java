@@ -49,6 +49,46 @@ public class IntegrationTests {
         return karateScenario("searchCarsByPriceRange_DebeRetornarUnaListaCon9Carros_CuandoElPrecioDelCarroSupereLos50Millones");
      }
 
+    @Karate.Test
+    public Karate searchCarsByBrands_DebeDevolver3Carros_CuandoSeFiltrePorLaMarcaBMW(){
+        return karateScenario("searchCarsByBrands_DebeDevolver3Carros_CuandoSeFiltrePorLaMarcaBMW");
+    }
+
+    @Karate.Test
+    public Karate searchCarsByBrands_DebeDevolver3Carros_CuandoSeFiltrePorLaMarcaKia(){
+        return karateScenario("searchCarsByBrands_DebeDevolver3Carros_CuandoSeFiltrePorLaMarcaKia");
+    }
+
+    @Karate.Test
+    public Karate searchCarsByBrands_DebeDevolver3Carros_CuandoSeFiltrePorLaMarcaPorche(){
+        return karateScenario("searchCarsByBrands_DebeDevolver3Carros_CuandoSeFiltrePorLaMarcaPorche");
+    }
+
+    @Karate.Test
+    public Karate searchCarsByBrands_DebeDevolver6Carros_CuandoSeFiltrePorLaMarcaBMW_Y_Kia(){
+        return karateScenario("searchCarsByBrands_DebeDevolver6Carros_CuandoSeFiltrePorLaMarcaBMW_Y_Kia");
+    }
+
+    @Karate.Test
+    public Karate searchCarsByBrands_DebeDevolver6Carros_CuandoSeFiltrePorLaMarcaBMW_Y_Porche(){
+        return karateScenario("searchCarsByBrands_DebeDevolver6Carros_CuandoSeFiltrePorLaMarcaBMW_Y_Porche");
+    }
+
+    @Karate.Test
+    public Karate searchCarsByBrands_DebeDevolver6Carros_CuandoSeFiltrePorLaMarcaKia_Y_Porche(){
+        return karateScenario("searchCarsByBrands_DebeDevolver6Carros_CuandoSeFiltrePorLaMarcaKia_Y_Porche");
+    }
+
+    @Karate.Test
+    public Karate searchCarsByBrands_DebeDevolver9Carros_CuandoSeFiltrePorLaMarcaBMW_Y_Kia_Y_Porche(){
+        return karateScenario("searchCarsByBrands_DebeDevolver9Carros_CuandoSeFiltrePorLaMarcaBMW_Y_Kia_Y_Porche");
+    }
+
+    @Karate.Test
+    public Karate searchCarsByBrands_DebeDevolver9Carros_CuandoNoSeEspecifiqueNingunaMarca_DadoQuePorDefectoBuscaraLasTresDisponibles(){
+        return karateScenario("searchCarsByBrands_DebeDevolver9Carros_CuandoNoSeEspecifiqueNingunaMarca_DadoQuePorDefectoBuscaraLasTresDisponibles");
+    }
+
     private Karate karateScenario(String scenarioName) {
         return Karate.run()
                 .scenarioName(scenarioName)

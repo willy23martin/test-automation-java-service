@@ -94,4 +94,9 @@ class CarsServiceTest {
     void searchCarsByBrands_DebeDevolver9Carros_CuandoSeFiltrePorLaMarcaBMW_Y_Kia_Y_Porche() {
         assertEquals(9, carsService.searchCarsByBrands("BMW,Kia,Porche").size());
     }
+
+    @Test
+    void searchCarsByBrands_NoDebeDevolverCarros_CuandoNoSeEspecifiqueNingunaMarca() {
+        assertEquals(0, carsService.searchCarsByBrands("").size());
+    }
 }
