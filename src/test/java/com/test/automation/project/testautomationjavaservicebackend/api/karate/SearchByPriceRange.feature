@@ -47,3 +47,11 @@ Feature: GET Search Cars By Price Range
     When method get
     Then status 200
     And match response == '#[9]'
+
+  Scenario: searchCarsByPriceRange_DebeLanzarUnIllegalArgumentException_CuandoElPrecioInicialDelCarroSupereAlPrecioFinalParaFiltrar
+    Given url baseUrl + '/api/search'
+    And param initialPrice = 1000000000.0
+    And param finalPrice = 50000000.0
+    When method get
+    Then status 400
+    And match karate.toString(response) contains "Bad Request"

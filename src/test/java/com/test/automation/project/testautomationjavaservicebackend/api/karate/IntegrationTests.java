@@ -49,6 +49,11 @@ public class IntegrationTests {
         return karateScenario("searchCarsByPriceRange_DebeRetornarUnaListaCon9Carros_CuandoElPrecioDelCarroSupereLos50Millones");
      }
 
+     @Karate.Test
+     public Karate searchCarsByPriceRange_DebeLanzarUnIllegalArgumentException_CuandoElPrecioInicialDelCarroSupereAlPrecioFinalParaFiltrar(){
+        return karateScenario("searchCarsByPriceRange_DebeLanzarUnIllegalArgumentException_CuandoElPrecioInicialDelCarroSupereAlPrecioFinalParaFiltrar");
+     }
+
     @Karate.Test
     public Karate searchCarsByBrands_DebeDevolver3Carros_CuandoSeFiltrePorLaMarcaBMW(){
         return karateScenario("searchCarsByBrands_DebeDevolver3Carros_CuandoSeFiltrePorLaMarcaBMW");
