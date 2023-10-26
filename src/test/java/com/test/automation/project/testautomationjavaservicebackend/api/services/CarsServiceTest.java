@@ -31,7 +31,7 @@ class CarsServiceTest {
     }
 
     @Test
-    void searchCarsByPriceRange_DebeRetornarUnaListaConDosCarros_CuandoElPrecioDelCarroNoSuperaLos100Millones() {
+    void searchCarsByPriceRange_DebeRetornarUnaListaConTresCarros_CuandoElPrecioDelCarroNoSuperaLos100Millones() {
         assertEquals(3, carsService.searchCarsByPriceRange(0.0, 100000000.0).size());
     }
 
