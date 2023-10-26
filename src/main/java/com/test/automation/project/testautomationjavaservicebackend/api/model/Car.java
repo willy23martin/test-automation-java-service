@@ -18,7 +18,8 @@ public class Car {
 
     @Override
     public boolean equals(Object car){
-        return Double.compare(this.price, ((Car)car).getPrice()) == 0;
+        double carPrice = ((Car)car).getPrice();
+        return Double.compare(this.price, carPrice) == 0;
     }
 
     @Override
