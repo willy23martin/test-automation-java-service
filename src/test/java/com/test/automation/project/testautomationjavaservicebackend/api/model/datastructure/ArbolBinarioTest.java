@@ -8,6 +8,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -22,8 +25,8 @@ class ArbolBinarioTest {
     void setUp(){
         inventario = new ArbolBinario<>();
         carroRaiz = new Car("imageURL.jpg", "CarroRaiz", 100.0, "Desc", "BMW");
-        carroDerecha = new Car("imageURL.jpg", "CarroRaiz", 100.01, "Desc", "BMW");
-        carroIzquierda = new Car("imageURL.jpg", "CarroRaiz", 99.999, "Desc", "BMW");
+        carroDerecha = new Car("imageURL.jpg", "CarroRaiz", 200.0, "Desc", "BMW");
+        carroIzquierda = new Car("imageURL.jpg", "CarroRaiz", 90.0, "Desc", "BMW");
     }
 
     @Test
@@ -47,5 +50,18 @@ class ArbolBinarioTest {
 
     @Test
     void recorrerInorden() {
+        ArbolBinario<Car> inventario = Mockito.spy(new ArbolBinario<>());
+        inventario.agregarElemento(carroRaiz);
+        inventario.agregarElemento(carroDerecha);
+        inventario.agregarElemento(carroIzquierda);
+
+        ArrayList<Car> inventarioRecorridoInorden = inventario.recorrerInorden();
+
+        assertEquals(inventario.getRaiz().getElemento(), carroRaiz);
+        assertEquals(inventario.getRaiz().getDer().getElemento(), carroDerecha);
+        assertEquals(inventario.getRaiz().getIzq().getElemento(), carroIzquierda);
+        assertEquals(inventarioRecorridoInorden.get(0), carroIzquierda);
+        assertEquals(inventarioRecorridoInorden.get(1), carroRaiz);
+        assertEquals(inventarioRecorridoInorden.get(2), carroDerecha);
     }
 }
