@@ -22,7 +22,8 @@ public class CarsService {
         return carsBinaryTree.recorrerInorden();
     }
 
-    public List<Car> searchCarsByPriceRange(double initialPrice, double finalPrice) {
+    public List<Car> searchCarsByPriceRange(double initialPrice, double finalPrice) throws IllegalArgumentException {
+        validatePriceRange(initialPrice, finalPrice);
         List<Car> filteredCarsByPriceRange = new ArrayList<>();
         for (Car car: carsBinaryTree.recorrerInorden()) {
             int comparisonAgainstInitialPrice = Double.compare(car.getPrice(), initialPrice);
@@ -32,6 +33,12 @@ public class CarsService {
             }
         }
         return filteredCarsByPriceRange;
+    }
+
+    private void validatePriceRange(double initialPrice, double finalPrice) throws IllegalArgumentException {
+        if(Double.compare(initialPrice, finalPrice) > 0) {
+            throw new IllegalArgumentException("finalPrice should be greater than the initialPrice");
+        }
     }
 
     private static boolean carPriceIsBetweenRange(int comparisonAgainstInitialPrice, int comparisonAgainstFinalPrice) {

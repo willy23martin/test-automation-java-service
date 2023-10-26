@@ -61,6 +61,20 @@ class CarsServiceTest {
     }
 
     @Test
+    void searchCarsByPriceRange_DebeLanzarUnIllegalArgumentException_CuandoElPrecioInicialDelCarroSupereAlPrecioFinalParaFiltrar() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            carsService.searchCarsByPriceRange(1000000000.0,  50000000.0);
+        });
+
+        try {
+            carsService.searchCarsByPriceRange(1000000000.0,  50000000.0);
+        } catch(IllegalArgumentException exception) {
+            assertEquals(exception.getMessage(), "finalPrice should be greater than the initialPrice");
+        }
+
+    }
+
+    @Test
     void searchCarsByBrands_DebeDevolver3Carros_CuandoSeFiltrePorLaMarcaBMW() {
         assertEquals(3, carsService.searchCarsByBrands("BMW").size());
     }

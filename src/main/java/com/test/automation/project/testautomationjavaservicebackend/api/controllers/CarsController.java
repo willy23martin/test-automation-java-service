@@ -3,7 +3,9 @@ package com.test.automation.project.testautomationjavaservicebackend.api.control
 import com.test.automation.project.testautomationjavaservicebackend.api.model.Car;
 import com.test.automation.project.testautomationjavaservicebackend.api.services.CarsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -23,12 +25,12 @@ public class CarsController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/search")
     public List<Car> searchCarsByPriceRange(@RequestParam(value = "initialPrice", defaultValue = "0.0") String initialPrice,
-                                            @RequestParam(value = "finalPrice", defaultValue = "0.0") String finalPrice) throws Exception {
+                                            @RequestParam(value = "finalPrice", defaultValue = "0.0") String finalPrice) {
         return carsService.searchCarsByPriceRange(Double.parseDouble(initialPrice), Double.parseDouble(finalPrice));
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/searchBrands")
-    public List<Car> filterCarsByBrands(@RequestParam(value = "brands", defaultValue = "BMW,Kia,Porche") String brands) throws Exception {
+    public List<Car> filterCarsByBrands(@RequestParam(value = "brands", defaultValue = "BMW,Kia,Porche") String brands) {
         if(brands.isBlank()) brands = "BMW,Kia,Porche";
         return carsService.searchCarsByBrands(brands);
     }
