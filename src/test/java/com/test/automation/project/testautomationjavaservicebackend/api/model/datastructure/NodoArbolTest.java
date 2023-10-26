@@ -4,13 +4,9 @@ import com.test.automation.project.testautomationjavaservicebackend.api.model.Ca
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(MockitoExtension.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class NodoArbolTest {
 
@@ -19,8 +15,8 @@ class NodoArbolTest {
 
     @BeforeAll
     void setUp(){
-        carroRaiz = Mockito.spy(new Car("imageURL.jpg", "CarroRaiz", 100.00, "Desc", "BMW"));
-        carroDerecha = Mockito.spy(new Car("imageURL.jpg", "CarroRaiz", 100.50, "Desc", "BMW"));
+        carroRaiz = new Car("imageURL.jpg", "CarroRaiz", 100.00, "Desc", "BMW");
+        carroDerecha = new Car("imageURL.jpg", "CarroRaiz", 200.0, "Desc", "BMW");
         nodoArbolRaiz = new NodoArbol<>(carroRaiz);
         nodoArbolDerecha = new NodoArbol<>(carroDerecha);
     }
