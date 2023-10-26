@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
 
+import java.util.Objects;
+
 @Data
 @AllArgsConstructor
 @ToString
@@ -16,6 +18,12 @@ public class Car {
 
     @Override
     public boolean equals(Object car){
-        return Double.compare(this.price, ((Car)car).getPrice()) == 0;
+        double carPrice = ((Car)car).getPrice();
+        return Double.compare(this.price, carPrice) == 0;
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(this.price);
     }
 }

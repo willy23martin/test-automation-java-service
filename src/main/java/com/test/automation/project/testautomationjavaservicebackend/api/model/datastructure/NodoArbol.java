@@ -9,7 +9,7 @@ public class NodoArbol<T> implements Comparable<NodoArbol<T>> {
 	private NodoArbol<T> izq, der;
 
 	public NodoArbol(T elemento) {
-		this.elemento = elemento;
+		setElemento(elemento);
 		this.izq = null;
 		this.der = null;
 	}
@@ -49,11 +49,11 @@ public class NodoArbol<T> implements Comparable<NodoArbol<T>> {
 	}
 
 	public ArrayList<T> recorrerInorden(ArrayList<T> acumulado) {
-		if (izq != null) {
+		if (getIzq() != null) {
 			izq.recorrerInorden(acumulado);
 		}
 		acumulado.add(elemento);
-		if (der != null) {
+		if (getDer() != null) {
 			der.recorrerInorden(acumulado);
 		}
 		return acumulado;
@@ -88,19 +88,19 @@ public class NodoArbol<T> implements Comparable<NodoArbol<T>> {
 		NodoArbol<T> nodoNuevo = new NodoArbol<T>(elemento);
 		if (esHoja()) {
 			if (esMenor(nodoNuevo)) {
-				der = nodoNuevo;
+				setDer(nodoNuevo);
 			} else {
-				izq = nodoNuevo;
+				setIzq(nodoNuevo);
 			}
 		} else if (esMenor(nodoNuevo)) {
 			if (der == null) {
-				der = nodoNuevo;
+				setDer(nodoNuevo);
 			} else {
 				der.agregarElemento(elemento);
 			}
 		} else {
 			if (izq == null) {
-				izq = nodoNuevo;
+				setIzq(nodoNuevo);
 			} else {
 				izq.agregarElemento(elemento);
 			}
