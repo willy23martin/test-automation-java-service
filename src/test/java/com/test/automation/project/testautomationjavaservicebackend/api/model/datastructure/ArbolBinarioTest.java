@@ -30,18 +30,18 @@ class ArbolBinarioTest {
     }
 
     @Test
-    void estaVacio_DebeRetornarVerdadero_CuandoSeHayaInicializadoSinElementos() {
+    void ARB01_estaVacio_DebeRetornarVerdadero_CuandoSeHayaInicializadoSinElementos() {
         assertTrue(inventario.estaVacio());
     }
 
     @Test
-    void estaVacio_DebeRetornarFalso_CuandoElInventarioTengaAlMenosUnCarro() {
+    void ARB02_estaVacio_DebeRetornarFalso_CuandoElInventarioTengaAlMenosUnCarro() {
         inventario.agregarElemento(carroRaiz);
         assertFalse(inventario.estaVacio());
     }
 
     @Test
-    void agregarElemento_PorLaPrimeraVez_DebeAsignarloASuNodoRaiz() {
+    void ARB03_agregarElemento_PorLaPrimeraVez_DebeAsignarloASuNodoRaiz() {
         ArbolBinario<Car> inventario = Mockito.spy(new ArbolBinario<>());
         inventario.agregarElemento(carroRaiz);
         Mockito.verify(inventario, Mockito.times(1)).setRaiz(Mockito.any());
@@ -49,7 +49,7 @@ class ArbolBinarioTest {
     }
 
     @Test
-    void recorrerInorden() {
+    void ARB04_recorrerInorden_DebeRetornarTodosLosElementosRecorridosDeIzqADer_EsDecir_EnOrdenAscendente() {
         ArbolBinario<Car> inventario = Mockito.spy(new ArbolBinario<>());
         inventario.agregarElemento(carroRaiz);
         inventario.agregarElemento(carroDerecha);
