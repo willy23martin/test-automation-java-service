@@ -26,42 +26,42 @@ class CarsServiceTest {
     }
 
     @Test
-    void getCars_DebeDevolverNueveCarrosCargadosPreviamenteEnCarsDAO() {
+    void EPCARS001_getCars_DebeDevolverNueveCarrosCargadosPreviamenteEnCarsDAO() {
         assertEquals(9, carsService.getCars().size());
     }
 
     @Test
-    void searchCarsByPriceRange_DebeRetornarUnaListaConTresCarros_CuandoElPrecioDelCarroNoSuperaLos100Millones() {
+    void EPSEARCHP001_searchCarsByPriceRange_DebeRetornarUnaListaConTresCarros_CuandoElPrecioDelCarroNoSuperaLos100Millones() {
         assertEquals(3, carsService.searchCarsByPriceRange(0.0, 100000000.0).size());
     }
 
     @Test
-    void searchCarsByPriceRange_DebeRetornarUnaListaConTresCarros_CuandoElPrecioDelCarroEstribaEntre100MillonesY200Millones() {
+    void EPSEARCHP002_searchCarsByPriceRange_DebeRetornarUnaListaConTresCarros_CuandoElPrecioDelCarroEstribaEntre100MillonesY200Millones() {
         assertEquals(3, carsService.searchCarsByPriceRange(100000000.0, 200000000.0).size());
     }
 
     @Test
-    void searchCarsByPriceRange_DebeRetornarUnaListaConTresCarros_CuandoElPrecioDelCarroSupereLos200Millones() {
+    void EPSEARCHP003_searchCarsByPriceRange_DebeRetornarUnaListaConTresCarros_CuandoElPrecioDelCarroSupereLos200Millones() {
         assertEquals(3, carsService.searchCarsByPriceRange(200000000.0, 1000000000.0).size());
     }
 
     @Test
-    void searchCarsByPriceRange_DebeRetornarUnaListaCon6Carros_CuandoElPrecioDelCarroSupereLos100Millones() {
+    void EPSEARCHP004_searchCarsByPriceRange_DebeRetornarUnaListaCon6Carros_CuandoElPrecioDelCarroSupereLos100Millones() {
         assertEquals(6, carsService.searchCarsByPriceRange(100000000.0, 1000000000.0).size());
     }
 
     @Test
-    void searchCarsByPriceRange_DebeRetornarUnaListaVacia_CuandoElPrecioDelCarroSeaInferiorA50Millones() {
+    void EPSEARCHP005_searchCarsByPriceRange_DebeRetornarUnaListaVacia_CuandoElPrecioDelCarroSeaInferiorA50Millones() {
         assertEquals(0, carsService.searchCarsByPriceRange(0.0, 50000000.0).size());
     }
 
     @Test
-    void searchCarsByPriceRange_DebeRetornarUnaListaCon9Carros_CuandoElPrecioDelCarroSupereLos50Millones() {
+    void EPSEARCHP006_searchCarsByPriceRange_DebeRetornarUnaListaCon9Carros_CuandoElPrecioDelCarroSupereLos50Millones() {
         assertEquals(9, carsService.searchCarsByPriceRange(50000000.0, 1000000000.0).size());
     }
 
     @Test
-    void searchCarsByPriceRange_DebeLanzarUnIllegalArgumentException_CuandoElPrecioInicialDelCarroSupereAlPrecioFinalParaFiltrar() {
+    void EPSEARCHP007_searchCarsByPriceRange_DebeLanzarUnIllegalArgumentException_CuandoElPrecioInicialDelCarroSupereAlPrecioFinalParaFiltrar() {
         assertThrows(IllegalArgumentException.class, () -> {
             carsService.searchCarsByPriceRange(1000000000.0,  50000000.0);
         });
@@ -75,37 +75,37 @@ class CarsServiceTest {
     }
 
     @Test
-    void searchCarsByBrands_DebeDevolver3Carros_CuandoSeFiltrePorLaMarcaBMW() {
+    void EPSEARCHB001_searchCarsByBrands_DebeDevolver3Carros_CuandoSeFiltrePorLaMarcaBMW() {
         assertEquals(3, carsService.searchCarsByBrands("BMW").size());
     }
 
     @Test
-    void searchCarsByBrands_DebeDevolver3Carros_CuandoSeFiltrePorLaMarcaKia() {
+    void EPSEARCHB002_searchCarsByBrands_DebeDevolver3Carros_CuandoSeFiltrePorLaMarcaKia() {
         assertEquals(3, carsService.searchCarsByBrands("Kia").size());
     }
 
     @Test
-    void searchCarsByBrands_DebeDevolver3Carros_CuandoSeFiltrePorLaMarcaPorche() {
+    void EPSEARCHB003_searchCarsByBrands_DebeDevolver3Carros_CuandoSeFiltrePorLaMarcaPorche() {
         assertEquals(3, carsService.searchCarsByBrands("Porche").size());
     }
 
     @Test
-    void searchCarsByBrands_DebeDevolver6Carros_CuandoSeFiltrePorLaMarcaBMW_Y_Kia() {
+    void EPSEARCHB004_searchCarsByBrands_DebeDevolver6Carros_CuandoSeFiltrePorLaMarcaBMW_Y_Kia() {
         assertEquals(6, carsService.searchCarsByBrands("BMW,Kia").size());
     }
 
     @Test
-    void searchCarsByBrands_DebeDevolver6Carros_CuandoSeFiltrePorLaMarcaBMW_Y_Porche() {
+    void EPSEARCHB005_searchCarsByBrands_DebeDevolver6Carros_CuandoSeFiltrePorLaMarcaBMW_Y_Porche() {
         assertEquals(6, carsService.searchCarsByBrands("BMW,Porche").size());
     }
 
     @Test
-    void searchCarsByBrands_DebeDevolver6Carros_CuandoSeFiltrePorLaMarcaKia_Y_Porche() {
+    void EPSEARCHB006_searchCarsByBrands_DebeDevolver6Carros_CuandoSeFiltrePorLaMarcaKia_Y_Porche() {
         assertEquals(6, carsService.searchCarsByBrands("Kia,Porche").size());
     }
 
     @Test
-    void searchCarsByBrands_DebeDevolver9Carros_CuandoSeFiltrePorLaMarcaBMW_Y_Kia_Y_Porche() {
+    void EPSEARCHB007_searchCarsByBrands_DebeDevolver9Carros_CuandoSeFiltrePorLaMarcaBMW_Y_Kia_Y_Porche() {
         assertEquals(9, carsService.searchCarsByBrands("BMW,Kia,Porche").size());
     }
 
