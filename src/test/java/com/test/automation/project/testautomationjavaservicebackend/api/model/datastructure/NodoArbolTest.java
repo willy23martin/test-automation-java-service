@@ -22,17 +22,17 @@ class NodoArbolTest {
     }
 
     @Test
-    void testToString_DebeRetornarLaRepresentacionToStringDelElemento() {
+    void NODAB01_ToString_DebeRetornarLaRepresentacionToStringDelElemento() {
         assertEquals(nodoArbolRaiz.toString(), carroRaiz.toString());
     }
 
     @Test
-    void testEquals_DebeRetornarFalso_CuandoElPrecioDeLosDosElementosDeCadaNodoACompararDifieren() {
+    void NODAB02_Equals_DebeRetornarFalso_CuandoElPrecioDeLosDosElementosDeCadaNodoACompararDifieren() {
         assertFalse(nodoArbolRaiz.equals(nodoArbolDerecha));
     }
 
     @Test
-    void testEquals_DebeRetornarVerdadero_CuandoElPrecioDeLosDosElementosDeCadaNodoACompararSonExactamenteIguales() {
+    void NODAB03_Equals_DebeRetornarVerdadero_CuandoElPrecioDeLosDosElementosDeCadaNodoACompararSonExactamenteIguales() {
         NodoArbol<Car> nodoArbol = new NodoArbol<>(carroDerecha);
         assertTrue(nodoArbolDerecha.equals(nodoArbol));
     }
