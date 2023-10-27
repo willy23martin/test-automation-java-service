@@ -37,3 +37,25 @@ jobs:
           coverage_report_title: 'Test coverage results'
           coverage_report_name: 'Test coverage results'
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Report JaCoCo coverage in GitHub Pages
+        uses: PavanMudigonda/html-reporter-github-pages@v1.2
+        with:
+          test_results: 'target/site/jacoco/index.html'
+          keep_reports: 20
+          gh_pages: gh_pages
+          subfolder: test_reports
+          tool_name: jacoco
+          workflow_name: ${{ github.workflow }}
+          env: QA
+
+      - name: Report Karate Summary in GitHub Pages
+        uses: PavanMudigonda/html-reporter-github-pages@v1.2
+        with:
+          test_results: 'target/karate-reports/karate-summary.html'
+          keep_reports: 20
+          gh_pages: gh_pages
+          subfolder: test_reports
+          tool_name: jacoco
+          workflow_name: ${{ github.workflow }}
+          env: QA
